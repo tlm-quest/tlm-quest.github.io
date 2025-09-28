@@ -194,7 +194,7 @@ services:
       - ./generate-report.js:/app/generate-report.js:ro
       - ./data:/app/data:ro
       - ../../docs:/app/docs
-    # restart: "no"
+
     profiles: ["report"]
 
 models:
