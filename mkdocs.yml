@@ -15,7 +15,8 @@ copyright: Copyright &copy; 2025 - 2026 Philippe Charrière
 
 nav:
     - 🏠 Home: index.md
-
+    - 📝 What's new: what-is-new.md
+    - 🤖 Tiny Language Models List: tlms-list.md
 theme:
   name: material
   palette:
@@ -34,6 +35,7 @@ markdown_extensions:
       linenums: true
       anchor_linenums: true
   - pymdownx.superfences
+  - tables
 
 
 
