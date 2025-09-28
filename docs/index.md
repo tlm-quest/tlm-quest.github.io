@@ -1,2 +1,2 @@
 # Tiny Language Model Quest
-> 🚧 work in progress
+> 🚧 work in progress 🤓
