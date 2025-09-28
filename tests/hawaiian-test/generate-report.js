@@ -59,7 +59,7 @@ function generateMarkdownReport(data) {
 
     // Table header
     markdown += `| Model | Score | Quantization Format | Temperature | Top P | Total Time |\n`;
-    markdown += `|--------|-------|---------------------------|-------------|-------|-------------|\n`;
+    markdown += `|-------|-------|---------------------|-------------|-------|------------|\n`;
 
     // Table rows
     for (const item of data) {
