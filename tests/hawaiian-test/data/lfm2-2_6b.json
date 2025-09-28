@@ -1,0 +1,12 @@
+{
+  "test": "Hawaiian Pizza Test",
+  "score": 4,
+  "model_id": "hf.co/liquidai/lfm2-2.6b-gguf:q4_k_m",
+  "quantization_format": "q4_k_m",
+  "temperature": 0,
+  "top_p": 0.800000011920929,
+  "total_time": "1m43.037463756s",
+  "architecture": "arm64",
+  "os": "linux",
+  "num_cpu": 12
+}

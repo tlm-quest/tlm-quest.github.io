@@ -1,0 +1,12 @@
+{
+  "test": "Hawaiian Pizza Test",
+  "score": 5,
+  "model_id": "hf.co/qwen/qwen2.5-1.5b-instruct-gguf:q4_k_m",
+  "quantization_format": "q4_k_m",
+  "temperature": 0,
+  "top_p": 0.800000011920929,
+  "total_time": "1m9.240284282s",
+  "architecture": "arm64",
+  "os": "linux",
+  "num_cpu": 12
+}

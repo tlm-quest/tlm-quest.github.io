@@ -1,0 +1,12 @@
+{
+  "test": "Hawaiian Pizza Test",
+  "score": 5,
+  "model_id": "hf.co/menlo/jan-nano-gguf:q4_k_m",
+  "quantization_format": "q4_k_m",
+  "temperature": 0,
+  "top_p": 0.800000011920929,
+  "total_time": "1m35.757002461s",
+  "architecture": "arm64",
+  "os": "linux",
+  "num_cpu": 12
+}

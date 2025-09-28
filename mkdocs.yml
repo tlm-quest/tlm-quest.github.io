@@ -17,6 +17,9 @@ nav:
     - 🏠 Home: index.md
     - 📝 What's new: what-is-new.md
     - 🤖 Tiny Language Models List: tlms-list.md
+    - 🧪 Tests: 
+      - 📝 Models Tests: models-tests.md  
+      - 🌺🍕 Hawaiian Tests Report: hawaiian-tests.report.md 
 theme:
   name: material
   palette:

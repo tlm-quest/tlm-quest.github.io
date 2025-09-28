@@ -1,0 +1,221 @@
+x-common-variables: &common-variables
+  SYSTEM_INSTRUCTION: |
+    You are Bob, an Hawaian pizza expert. 
+    Provide accurate, enthusiastic information about Hawaiian pizza's history 
+    (invented in Canada in 1962 by Sam Panopoulos), 
+    ingredients (ham, pineapple, cheese on tomato sauce), preparation methods, and cultural impact.
+    Use a friendly tone with occasional pizza puns. 
+    Defend pineapple on pizza good-naturedly while respecting differing opinions. 
+    If asked about other pizzas, briefly answer but return focus to Hawaiian pizza. 
+    Emphasize the sweet-savory flavor combination that makes Hawaiian pizza special.
+    USE ONLY THE INFORMATION PROVIDED IN THE KNOWLEDGE BASE.    
+
+    ## Traditional Ingredients of the Hawaiian pizza
+    - Base: Traditional pizza dough
+    - Sauce: Tomato-based pizza sauce
+    - Cheese: Mozzarella cheese
+    - Key toppings: Ham (or Canadian bacon) and pineapple
+    - Optional additional toppings: Bacon, mushrooms, bell peppers, jalapeños
+
+    ## Regional Variations the Hawaiian pizza
+    - Australia: "Hawaiian and bacon" adds extra bacon to the traditional recipe
+    - Brazil: "Portuguesa com abacaxi" combines the traditional Portuguese pizza (with ham, onions, hard-boiled eggs, olives) with pineapple
+    - Japan: Sometimes includes teriyaki chicken instead of ham
+    - Germany: "Hawaii-Toast" is a related open-faced sandwich with ham, pineapple, and cheese
+    - Sweden: "Flying Jacob" pizza includes banana, pineapple, curry powder, and chicken
+
+  USER_MESSAGE_1: who are you?
+  WORDS_TO_SEARCH_FOR_1: bob,hawaiian,pizza,expert
+
+  USER_MESSAGE_2: who invented the Hawaiian pizza?
+  WORDS_TO_SEARCH_FOR_2: canada,1962,sam,panopoulos
+
+  USER_MESSAGE_3: what are the ingredients of a Hawaiian pizza?
+  WORDS_TO_SEARCH_FOR_3: mozzarella,bacon,pineapple
+
+  USER_MESSAGE_4: what are the regional variations of the Hawaiian pizza?
+  WORDS_TO_SEARCH_FOR_4: australia,brazil,japan,germany,sweden
+
+  USER_MESSAGE_5: what is the best pizza in the world?
+  WORDS_TO_SEARCH_FOR_5: hawaiian pizza
+
+
+x-common-service: &common-service
+  image: hawaiian-test-app:latest
+  # environment:
+  #   <<: *common-variables
+  #   MODEL_TEMPERATURE: 0.0
+  #   MODEL_TOP_P: 0.8
+  volumes:
+    - ./data:/app/data
+  depends_on:
+    - hawaiian-test-builder
+
+services:
+  # ---------------------------------------------------------
+  # Usage:
+  # docker compose up --build -d
+  # ---------------------------------------------------------
+
+  # Shared service to build the image only once
+  hawaiian-test-builder:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: hawaiian-test-app:latest
+
+  hawaiian-test-jan-nano:
+    <<: *common-service
+    environment:
+      <<: *common-variables
+      MODEL_TEMPERATURE: 0.0
+      MODEL_TOP_P: 0.8
+      QUANTIZATION_FORMAT: q4_k_m
+      SCORE_FILE: ./data/jan-nano.json
+    models:
+      jan-nano:
+        endpoint_var: MODEL_RUNNER_BASE_URL
+        model_var: MODEL_ID
+
+  hawaiian-test-qwen25_0_5b:
+    <<: *common-service
+    environment:
+      <<: *common-variables
+      MODEL_TEMPERATURE: 0.0
+      MODEL_TOP_P: 0.8
+      QUANTIZATION_FORMAT: q4_k_m
+      SCORE_FILE: ./data/qwen25_0_5b.json
+    models:
+      qwen25_0_5b:
+        endpoint_var: MODEL_RUNNER_BASE_URL
+        model_var: MODEL_ID
+
+  hawaiian-test-qwen25_1_5b:
+    <<: *common-service
+    environment:
+      <<: *common-variables
+      MODEL_TEMPERATURE: 0.0
+      MODEL_TOP_P: 0.8
+      QUANTIZATION_FORMAT: q4_k_m
+      SCORE_FILE: ./data/qwen25_1_5b.json
+    models:
+      qwen25_1_5b:
+        endpoint_var: MODEL_RUNNER_BASE_URL
+        model_var: MODEL_ID
+
+  hawaiian-test-qwen25_3b:
+    <<: *common-service
+    environment:
+      <<: *common-variables
+      MODEL_TEMPERATURE: 0.0
+      MODEL_TOP_P: 0.8
+      QUANTIZATION_FORMAT: q4_k_m
+      SCORE_FILE: ./data/qwen25_3b.json
+    models:
+      qwen25_3b:
+        endpoint_var: MODEL_RUNNER_BASE_URL
+        model_var: MODEL_ID
+
+  hawaiian-test-lfm2-350m:
+    <<: *common-service
+    environment:
+      <<: *common-variables
+      MODEL_TEMPERATURE: 0.0
+      MODEL_TOP_P: 0.8
+      QUANTIZATION_FORMAT: q4_k_m
+      SCORE_FILE: ./data/lfm2-350m.json
+    models:
+      lfm2-350m:
+        endpoint_var: MODEL_RUNNER_BASE_URL
+        model_var: MODEL_ID
+  
+  hawaiian-test-lfm2-700m:
+    <<: *common-service
+    environment:
+      <<: *common-variables
+      MODEL_TEMPERATURE: 0.0
+      MODEL_TOP_P: 0.8
+      QUANTIZATION_FORMAT: q4_k_m
+      SCORE_FILE: ./data/lfm2-700m.json
+    models:
+      lfm2-700m:
+        endpoint_var: MODEL_RUNNER_BASE_URL
+        model_var: MODEL_ID
+
+  hawaiian-test-lfm2-1_2b:
+    <<: *common-service
+    environment:
+      <<: *common-variables
+      MODEL_TEMPERATURE: 0.0
+      MODEL_TOP_P: 0.8
+      QUANTIZATION_FORMAT: q4_k_m
+      SCORE_FILE: ./data/lfm2-1_2b.json
+    models:
+      lfm2-1_2b:
+        endpoint_var: MODEL_RUNNER_BASE_URL
+        model_var: MODEL_ID
+
+  hawaiian-test-lfm2-2_6b:
+    <<: *common-service
+    environment:
+      <<: *common-variables
+      MODEL_TEMPERATURE: 0.0
+      MODEL_TOP_P: 0.8
+      QUANTIZATION_FORMAT: q4_k_m
+      SCORE_FILE: ./data/lfm2-2_6b.json
+    models:
+      lfm2-2_6b:
+        endpoint_var: MODEL_RUNNER_BASE_URL
+        model_var: MODEL_ID
+
+  hawaiian-test-lucy:
+    <<: *common-service
+    environment:
+      <<: *common-variables
+      MODEL_TEMPERATURE: 0.0
+      MODEL_TOP_P: 0.8
+      QUANTIZATION_FORMAT: q4_k_m
+      SCORE_FILE: ./data/lucy.json
+    models:
+      lucy:
+        endpoint_var: MODEL_RUNNER_BASE_URL
+        model_var: MODEL_ID
+
+  # Report generation service - runs after all tests complete
+  # docker compose --profile report up report-generator --build
+  report-generator:
+    image: node:18-alpine
+    working_dir: /app
+    command: node generate-report.js
+    environment:
+      DATA_DIR: ./data
+      OUTPUT_FILE: ./docs/hawaiian-tests.report.md
+    volumes:
+      - ./generate-report.js:/app/generate-report.js:ro
+      - ./data:/app/data:ro
+      - ../../docs:/app/docs
+    # restart: "no"
+    profiles: ["report"]
+
+models:
+  # Hugging Face models
+  jan-nano:
+    model: hf.co/menlo/jan-nano-gguf:q4_k_m
+  qwen25_0_5b:
+    model: hf.co/qwen/qwen2.5-0.5b-instruct-gguf:q4_k_m
+  qwen25_1_5b:
+    model: hf.co/qwen/qwen2.5-1.5b-instruct-gguf:q4_k_m
+  qwen25_3b:
+    model: hf.co/qwen/qwen2.5-3b-instruct-gguf:q4_k_m
+  lfm2-350m:
+    model: hf.co/liquidai/lfm2-350m-gguf:q4_k_m
+  lfm2-700m:
+    model: hf.co/liquidai/lfm2-700m-gguf:q4_k_m
+  lfm2-1_2b:
+    model: hf.co/liquidai/lfm2-1.2b-gguf:q4_k_m
+  lfm2-2_6b:
+    model: hf.co/liquidai/lfm2-2.6b-gguf:q4_k_m
+  lucy:
+    model: hf.co/menlo/lucy-gguf:q4_k_m
+
+
